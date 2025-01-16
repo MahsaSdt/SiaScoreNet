@@ -11,3 +11,11 @@ SiaScoreNet is a machine learning model that integrates prediction scores from s
 - **Robust Prediction:** Combines the strengths of multiple predictors for enhanced accuracy.
 - **Deep Learning Backbone:** Employs a Siamese network architecture for efficient similarity learning.
 - **Versatile Input Support:** Handles a variety of HLA subtypes and peptides.
+
+
+## Files
+
+- `SiaScoreNet.ipynb`: Main script for loading test data, generating predictions, and calculating evaluation metrics.
+- `SiaScoreNet.pkl`: Pre-trained SiaScoreNet model file.
+- `ESM_test.csv`: Test dataset with peptide-HLA pairs with feature vector consist of IEDB scores and ESM embeddimgs.
+- `label.csv`: Test dataset labels.
