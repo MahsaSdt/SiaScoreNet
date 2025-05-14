@@ -3,7 +3,7 @@
 SiaScoreNet is a machine learning model that integrates prediction scores from state-of-the-art predictors with Siamese networks to provide superior performance in predicting HLA-peptide binding interactions. SiaScoreNet combines HLA embeddings, peptide embeddings, and prediction scores from multiple sources to provide a comprehensive solution. This tool is particularly useful for advancing research in immunotherapy, vaccine design, and precision medicine.
 
 
-![image](https://github.com/user-attachments/assets/19d92332-6fe4-4c26-b8b7-c9e8ec9983ec)
+<img width="539" alt="fig2" src="https://github.com/user-attachments/assets/01c53b61-b387-4003-9629-fba87c9e1c02" />
 
 
 
