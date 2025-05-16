@@ -31,6 +31,3 @@ This will generate:
 * predicted_proba: Predicted binding probability
 * predicted_label: Binary prediction (0/1)
 Saved in predictions.csv
-
-
-Citation
