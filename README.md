@@ -1,21 +1,81 @@
 # SiaScoreNet
 
-SiaScoreNet is a machine learning model that integrates prediction scores from state-of-the-art predictors with Siamese networks to provide superior performance in predicting HLA-peptide binding interactions. SiaScoreNet combines HLA embeddings, peptide embeddings, and prediction scores from multiple sources to provide a comprehensive solution. This tool is particularly useful for advancing research in immunotherapy, vaccine design, and precision medicine.
+### Ensemble Siamese Model for Predicting Binding Between HLA Class I Molecules and Peptides
 
+## Overview
 
-<img width="539" alt="fig2" src="https://github.com/user-attachments/assets/01c53b61-b387-4003-9629-fba87c9e1c02" />
+SiaScoreNet is a deep learning model that predicts the binding affinity between HLA class I proteins and peptides. It integrates sequence embeddings and ensemble scores from existing predictors, using a Siamese-like architecture.
 
+---
 
+## File Structure
 
-## Features
-- **Robust Prediction:** Combines the strengths of multiple predictors for enhanced accuracy.
-- **Deep Learning Backbone:** Employs a Siamese network architecture for efficient similarity learning.
-- **Versatile Input Support:** Handles a variety of HLA subtypes and peptides.
+SiaScoreNet-Project/
+├── model.py # Model architecture
+├── predict.py # Prediction pipeline
+├── requirements.txt # Python dependencies
+├── README.md # Project documentation
+├── weights/
+│ └── SiaScoreNet_trained_on_D1_model.h5
+├── data/
+│ └── test.csv
+└── predictions.csv # Output prediction file
 
+yaml
+Copy
+Edit
 
-## Files
+---
 
-- `SiaScoreNet.ipynb`: Main script for loading test data, generating predictions, and calculating evaluation metrics.
-- `SiaScoreNet.pkl`: Pre-trained SiaScoreNet model file.
-- `ESM_test.csv`: Test dataset with peptide-HLA pairs with feature vector consist of IEDB scores and ESM embeddimgs.
-- `label.csv`: Test dataset labels.
+## How to Run
+
+### 1. Install Requirements
+
+```bash
+pip install -r requirements.txt
+If using ESM embeddings:
+
+bash
+Copy
+Edit
+pip install fair-esm torch
+2. Prepare Data
+Place your test file at data/test.csv with the following columns:
+
+peptide
+
+HLA
+
+HLA_sequence
+
+label (optional)
+
+Ensemble scores (first 9 columns after dropping the above)
+
+Peptide embedding (320-dimensional vector)
+
+HLA embedding (320-dimensional vector)
+
+3. Run Prediction
+bash
+Copy
+Edit
+python predict.py
+This will generate:
+
+predicted_proba: Predicted binding probability
+
+predicted_label: Binary prediction (0/1)
+
+Saved in predictions.csv
+
+Model Inputs
+The model receives:
+
+Peptide embedding (320 dims)
+
+HLA embedding (320 dims)
+
+9 ensemble predictor scores
+
+Citation
