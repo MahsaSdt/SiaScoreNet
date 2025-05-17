@@ -3,7 +3,7 @@ import numpy as np
 from model import SiaScoreNet
 from tensorflow import keras
 
-df = pd.read_csv('data/test.csv')
+df = pd.read_csv('data/features_extracted.csv')
 
 
 X_etest = df.drop(columns=["peptide", "label", "HLA", "HLA_sequence"])
