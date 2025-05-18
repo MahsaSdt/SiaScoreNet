@@ -14,7 +14,10 @@ output_file = args.output
 
 df = pd.read_csv(input_file)
 
-X_etest = df.drop(columns=["peptide", "label", "HLA", "HLA_sequence"])
+columns_to_drop = ["peptide", "label", "HLA", "HLA_sequence"]
+if all(col in df.columns for col in columns_to_drop):
+    X_etest = df.drop(columns=columns_to_drop)
+
 X_etest_ens = X_etest.iloc[:, :9].values
 X_etest_1 = X_etest.iloc[:, 9:329].values
 X_etest_2 = X_etest.iloc[:, 329:].values
