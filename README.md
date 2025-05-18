@@ -36,7 +36,7 @@ NLVPMVATV,HLA-B*07:02
 Extract embeddings and ensemble scores by running:
 
 ```bash
-python feature_extraction.py --input input_data.csv --output features_extracted.csv
+python feature_extraction.py --input test_example.csv --output features_extracted.csv
 ```
 This will generate the file features_extracted.csv, which contains:
 * 9 IEDB scores for ensemble
