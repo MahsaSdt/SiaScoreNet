@@ -91,7 +91,8 @@ for method, idx in tqdm(methods_api.items(), desc="API methods"):
         df.loc[df['HLA'] == HLA, f'score_{method}'] = scores
 
 for method, idx in tqdm(methods_web.items(), desc="Web methods"):
-    for HLA in df[['HLA'] == HLA]['peptide'].tolist():
+    for HLA in df['HLA'].unique():
+        peps = df[df['HLA'] == HLA]['peptide'].tolist()
         scores = get_score2(peps, HLA, method, idx)
         df.loc[df['HLA'] == HLA, f'score_{method}'] = scores
 
