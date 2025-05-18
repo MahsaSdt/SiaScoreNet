@@ -44,7 +44,6 @@ def get_score(peptides, HLA, method, col_idx):
     except:
         return [None] * len(peptides)
 
-# IEDB وب (جدول دوم)
 def get_score2(peptides, HLA, method, col_idx):
     url = "http://tools-cluster-interface.iedb.org/tools_api/mhci/"
     payload = {
@@ -82,7 +81,7 @@ for method, idx in tqdm(methods_api.items(), desc="API methods"):
         df.loc[df['HLA'] == HLA, f'score_{method}'] = scores
 
 for method, idx in tqdm(methods_web.items(), desc="Web methods"):
-    for HLA in df['HLA'] == HLA]['peptide'].tolist()
+    for HLA in df['HLA'] == HLA['peptide'].tolist()
         scores = get_score2(peps, HLA, method, idx)
         df.loc[df['HLA'] == HLA, f'score_{method}'] = scores
 
