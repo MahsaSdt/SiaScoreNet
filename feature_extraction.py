@@ -4,6 +4,7 @@ import time
 from tqdm import tqdm
 from io import StringIO
 import torch
+from esm import pretrained
 import esm 
 
 df = pd.read_csv("input_data.csv")
