@@ -6,8 +6,17 @@ from io import StringIO
 import torch
 from esm import pretrained
 import esm 
+import argparse
 
-df = pd.read_csv("input_data.csv")
+parser = argparse.ArgumentParser()
+parser.add_argument('--input', type=str, required=True)
+parser.add_argument('--output', type=str, required=True)
+args = parser.parse_args()
+
+input_file = args.input
+output_file = args.output
+
+df = pd.read_csv(input_file)
 df = df[df['peptide'].str.len().between(8, 14)].reset_index(drop=True)
 
 def get_score(peptides, HLA, method, col_idx):
@@ -112,4 +121,5 @@ def extract_vectors(row):
 esm_cols = [f'HLA_ESM_{i}' for i in range(1, 321)] + [f'Peptide_ESM_{i}' for i in range(1, 321)]
 df[esm_cols] = df.apply(extract_vectors, axis=1)
 
-df.to_csv("features_extracted.csv", index=False)
+df.to_csv(output_file, index=False)
+
