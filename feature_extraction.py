@@ -4,13 +4,11 @@ import time
 from tqdm import tqdm
 from io import StringIO
 import torch
-import esm
-
+import esm 
 
 df = pd.read_csv("input_data.csv")
 df = df[df['peptide'].str.len().between(8, 14)].reset_index(drop=True)
 
-# IEDB API method
 def get_score(peptides, HLA, method, col_idx):
     url = "https://api-nextgen-tools.iedb.org/api/v1/pipeline"
     payload = {
@@ -46,7 +44,7 @@ def get_score(peptides, HLA, method, col_idx):
     except:
         return [None] * len(peptides)
 
-# IEDB web method
+# IEDB وب (جدول دوم)
 def get_score2(peptides, HLA, method, col_idx):
     url = "http://tools-cluster-interface.iedb.org/tools_api/mhci/"
     payload = {
@@ -74,10 +72,8 @@ methods_web = {
     'pickpocket': 6, 'netmhccons': 6, 'netmhcstabpan': 6
 }
 
-
 for m in list(methods_api.keys()) + list(methods_web.keys()):
     df[f'score_{m}'] = None
-
 
 for method, idx in tqdm(methods_api.items(), desc="API methods"):
     for HLA in df['HLA'].unique():
@@ -86,19 +82,16 @@ for method, idx in tqdm(methods_api.items(), desc="API methods"):
         df.loc[df['HLA'] == HLA, f'score_{method}'] = scores
 
 for method, idx in tqdm(methods_web.items(), desc="Web methods"):
-    for HLA in df['HLA'].unique():
-        peps = df[df['HLA'] == HLA]['peptide'].tolist()
+    for HLA in df['HLA'] == HLA]['peptide'].tolist()
         scores = get_score2(peps, HLA, method, idx)
         df.loc[df['HLA'] == HLA, f'score_{method}'] = scores
 
-# Load HLA sequences
 hla_map = pd.read_csv('MHC_pseudo.dat', sep='\s+', header=None)
 hla_map[0] = [''.join([h[:5], '*', h[5:]]) for h in hla_map[0]]
 hla_map[0] = [h if ':' in h else h[:8] + ':' + h[8:] for h in hla_map[0]]
 hla_dict = dict(zip(hla_map[0], hla_map[1]))
 df['HLA_sequence'] = df['HLA'].map(hla_dict)
 
-# Load ESM model
 esm_model, alphabet = esm.pretrained.esm2_t6_8M_UR50D()
 batch_converter = alphabet.get_batch_converter()
 
@@ -116,9 +109,7 @@ def extract_vectors(row):
     except:
         return pd.Series([None]*640)
 
-
 esm_cols = [f'HLA_ESM_{i}' for i in range(1, 321)] + [f'Peptide_ESM_{i}' for i in range(1, 321)]
 df[esm_cols] = df.apply(extract_vectors, axis=1)
-
 
 df.to_csv("features_extracted.csv", index=False)
