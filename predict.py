@@ -2,9 +2,17 @@ import pandas as pd
 import numpy as np
 from model import SiaScoreNet
 from tensorflow import keras
+import argparse
 
-df = pd.read_csv('features_extracted.csv')
+parser = argparse.ArgumentParser()
+parser.add_argument('--input', type=str, required=True)
+parser.add_argument('--output', type=str, required=True)
+args = parser.parse_args()
 
+input_file = args.input
+output_file = args.output
+
+df = pd.read_csv(input_file)
 
 X_etest = df.drop(columns=["peptide", "label", "HLA", "HLA_sequence"])
 X_etest_ens = X_etest.iloc[:, :9].values
@@ -21,4 +29,5 @@ y_pred = (y_pred_proba > 0.5).astype(int)
 
 df['predicted_proba'] = y_pred_proba
 df['predicted_label'] = y_pred
-df.to_csv('predictions.csv', index=False)
+df.to_csv(output_file, index=False)
+
