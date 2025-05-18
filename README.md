@@ -1,6 +1,6 @@
 # SiaScoreNet
 
-###A Siamese neural network-based model integrating prediction scores for HLA-peptide interaction prediction
+### A Siamese neural network-based model integrating prediction scores for HLA-peptide interaction prediction
 
 ## Overview
 
