@@ -1,13 +1,14 @@
 # SiaScoreNet
 
-### Ensemble Siamese Model for Predicting Binding Between HLA Class I Molecules and Peptides
+###A Siamese neural network-based model integrating prediction scores for HLA-peptide interaction prediction
 
 ## Overview
 
 ***SiaScoreNet*** is a deep learning model that predicts the binding affinity between HLA class I proteins and peptides. It integrates sequence embeddings and ensemble scores from existing predictors, using a Siamese-like architecture.
 
 
-<img width="539" alt="fig2" src="https://github.com/user-attachments/assets/f0e72473-9808-4e95-abf2-ca6975240fe5" />
+<img width="527" alt="fig2" src="https://github.com/user-attachments/assets/7e12b798-c743-4a8f-88e3-4b39f90d2583" />
+
 
 ---
 
@@ -19,7 +20,7 @@ Follow these steps to perform binding prediction using SiaScoreNet:
 pip install -r requirements.txt
 ```
 
-### 1. Prepare Input File
+### 2. Prepare Input File
 Create a CSV file named Data/input_data.csv with two columns:
 * peptide
 * HLA
@@ -31,7 +32,7 @@ peptide,HLA
 LLFGYPVYV,HLA-A*02:01
 
 NLVPMVATV,HLA-B*07:02
-### 2. Run Feature Extraction
+### 3. Run Feature Extraction
 Extract embeddings and ensemble scores by running:
 
 ```bash
@@ -42,7 +43,7 @@ This will generate the file features_extracted.csv, which contains:
 * ESM embeddings of the peptide
 * ESM embeddings of the HLA sequence
 
-### 3. Run Prediction
+### 4. Run Prediction
 Use the extracted features to make predictions:
 
 ```bash
