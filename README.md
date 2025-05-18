@@ -25,6 +25,7 @@ Create a CSV file named Data/input_data.csv with two columns:
 * HLA
 
 Example:
+
 peptide,HLA
 
 LLFGYPVYV,HLA-A*02:01
