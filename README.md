@@ -21,7 +21,7 @@ pip install -r requirements.txt
 ```
 
 ### 2. Prepare Input File
-Create a CSV file named Data/input_data.csv with two columns:
+Create a CSV file named test_example.csv with two columns:
 * peptide
 * HLA
 
