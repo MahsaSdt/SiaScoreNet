@@ -31,11 +31,12 @@ Create a CSV file named test_example.csv with two columns:
 
 Example:
 
-peptide,HLA
+peptide, HLA
 
-LLFGYPVYV,HLA-A*02:01
+LLFGYPVYV, HLA-A*02:01
 
-NLVPMVATV,HLA-B*07:02
+NLVPMVATV, HLA-B*07:02
+
 ### 3. Run Feature Extraction
 Extract embeddings and ensemble scores by running:
 
