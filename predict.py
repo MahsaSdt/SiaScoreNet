@@ -14,7 +14,7 @@ output_file = args.output
 
 df = pd.read_csv(input_file)
 
-columns_to_drop = ["peptide", "label", "HLA", "HLA_sequence"]
+columns_to_drop = ["peptide", "label", "HLA", "HLA_sequence", "Unnamed: 0"]
 existing_columns = [col for col in columns_to_drop if col in df.columns]
 X_etest = df.drop(columns=existing_columns)
 
