@@ -10,6 +10,10 @@
 <img width="527" alt="fig2" src="https://github.com/user-attachments/assets/7e12b798-c743-4a8f-88e3-4b39f90d2583" />
 
 
+
+## Data availability
+All datasets used for training, validation, and testing of the SiaScoreNet model are publicly available on **Zenodo Repository:** [https://doi.org/10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX)
+
 ---
 
 ## How to Run
