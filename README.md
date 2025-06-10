@@ -12,7 +12,8 @@
 
 
 ## Data availability
-All datasets used for training, validation, and testing of the SiaScoreNet model are publicly available on **Zenodo Repository:** [https://doi.org/10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX)
+All datasets used for training, validation, and testing of the SiaScoreNet model are publicly available on **Zenodo Repository:** [https://doi.org/10.5281/zenodo.15606313](https://doi.org/10.5281/zenodo.15606313)
+
 
 ---
 
